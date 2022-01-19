@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     private int y1, y2, y3;
 
     //List of objects (pieces)
-    public List<Piece> availableCars = new List<Piece>();
+    public List<GameObject> availableCars = new List<GameObject>();
 
     public List<Piece> ramps = new List<Piece>();
     public List<Piece> longblocks = new List<Piece>();
@@ -103,16 +103,16 @@ public class LevelManager : MonoBehaviour
 
         // Spawn car inside it with some probability
         // if (Random.Range(0, 5) == 2) {
-            //List<Piece> possibleCars = availableCars;
-            //int idCar = Random.Range(0, possibleCars.Count);
-            Piece p = GetPiece(PieceType.ramp, 0);
-            p.transform.SetParent(s.transform);
+            int idCar = Random.Range(0, availableCars.Count);
+            //Piece p = GetPiece(PieceType.ramp, 0);
+            //p.transform.SetParent(s.transform);
             // choose lane
             int laneNr = Random.Range(0, s.lane.Length);
+            GameObject car = Instantiate(availableCars[idCar]);
             // make the spawned car face the right direction
             if (laneNr >= s.lane.Length / 2)
-                p.transform.Rotate(0, 180, 0);
-            p.transform.localPosition = new Vector3(s.lane[laneNr], 0, 0);
+                car.transform.Rotate(0, 180, 0);
+            car.transform.localPosition = new Vector3(s.lane[laneNr], 0, currentSpawnZ);
         //}
 
     }
