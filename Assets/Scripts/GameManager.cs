@@ -30,6 +30,15 @@ public class GameManager : MonoBehaviour
         modifierText.text = "x" + modifierScore.ToString("0.0");
     }
 
+    private void Start()
+    {
+        QualitySettings.vSyncCount = 0;
+        QualitySettings.antiAliasing = 0;
+
+        Application.targetFrameRate = 60;
+        Time.timeScale = 1f;
+    }
+
     public void Update()
     {
         //Start running after an initial tap (idle animation yet needed)
