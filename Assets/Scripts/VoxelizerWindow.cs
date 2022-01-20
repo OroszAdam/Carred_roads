@@ -24,17 +24,6 @@ class VoxelizerWindow : EditorWindow
 
     void Update()
     {
-        if (Selection.activeObject != null)
-        {
-            selectedObject = (GameObject)Selection.activeObject;
-            if (selectedObject.GetComponent<VoxelObject>())
-            {
-            }
-        }
-        else
-        {
-            selectedObject = null;
-        }
     }
 
     void OnGUI()
@@ -70,18 +59,8 @@ class VoxelizerWindow : EditorWindow
 
         if (GUILayout.Button(new GUIContent("Voxelize!", ""), GUILayout.Width(buttonSize * 4)))
         {
-            if (Selection.activeObject != null)
-            {
-                selectedObject = (GameObject)Selection.activeObject;
-                if (selectedObject.GetComponent<VoxelObject>())
-                {
-                }
-            }
-            else
-            {
-                selectedObject = null;
-            }
-
+            selectedObject = (Selection.activeObject != null) ? (GameObject)Selection.activeObject : null;
+            
             Mesh mesh;
             MeshFilter meshFilter = selectedObject.GetComponent<MeshFilter>();
             if (meshFilter != null)
@@ -104,6 +83,7 @@ class VoxelizerWindow : EditorWindow
             // build voxel cubes integrated mesh
             //selectedObject.GetComponent<MeshFilter>().sharedMesh = VoxelMesh.Build(voxels.ToArray(), unit, useUv);
 
+            // build gameobject with individual, colliding voxel cube objects
             Material material = selectedObject.GetComponent<MeshRenderer>().material;
             GameObject go = VoxelMesh.BuildGameObject(voxels.ToArray(), unit, material, useUv);
             go.GetComponent<MeshRenderer>().material = material;
