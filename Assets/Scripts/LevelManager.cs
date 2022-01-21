@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
     //List of objects (pieces)
     public List<GameObject> availableCars = new List<GameObject>();
 
+    public List<GameObject> availableCoins = new List<GameObject>();
+
     public List<Piece> ramps = new List<Piece>();
     public List<Piece> longblocks = new List<Piece>();
     public List<Piece> jumps = new List<Piece>();
@@ -112,7 +114,23 @@ public class LevelManager : MonoBehaviour
             // make the spawned car face the right direction
             if (laneNr >= s.lane.Length / 2)
                 car.transform.Rotate(0, 180, 0);
-            car.transform.localPosition = new Vector3(s.lane[laneNr], 0, currentSpawnZ);
+            // Spawn the car in the chosen lane, and at the (n-1)th segment to avoid spawning into air
+            car.transform.localPosition = new Vector3(s.lane[laneNr], 0, currentSpawnZ - s.lenght);
+        //}
+
+        // Spawn coins inside it with some probability
+        // if (Random.Range(0, 5) == 2) {
+            int idCoin = Random.Range(0, availableCoins.Count);
+            //Piece p = GetPiece(PieceType.ramp, 0);
+            //p.transform.SetParent(s.transform);
+            // choose lane
+            laneNr = Random.Range(0, s.lane.Length);
+            GameObject coin = Instantiate(availableCoins[idCoin]);
+            // make the spawned car face the right direction
+            // if (laneNr >= s.lane.Length / 2)
+            //     car.transform.Rotate(0, 180, 0);
+            // Spawn coin in the chosen lane, at some position
+            coin.transform.localPosition = new Vector3(s.lane[laneNr], 0, currentSpawnZ - (s.lenght / Random.Range(0.1f, 1)));
         //}
 
     }
