@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Obstacle
   - Protein
-  - Enemy
   layers:
   - Default
   - TransparentFX

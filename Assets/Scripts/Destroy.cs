@@ -15,7 +15,7 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(gameObject.transform.position.z);
+        Debug.Log(gameObject.transform.position.z);
 
         if (gameObject.transform.position.z < player.transform.position.z - threshold)
         {
