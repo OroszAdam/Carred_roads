@@ -6,6 +6,10 @@ public class PlayerMotor : MonoBehaviour
 {
     Vector3 initPos;
 
+
+    public GameObject NormalBody;
+    public GameObject VoxelizedBody;
+
     public const float LANE_DISTANCE = 13;
     private const float TURN_SPEED = 0.1f;
 
@@ -32,7 +36,8 @@ public class PlayerMotor : MonoBehaviour
 
 
     //Speed modification
-    private float originalSpeed = 30.0f;
+    //private float originalSpeed = 30.0f;
+    private float originalSpeed = 60.0f;
     private float speed;
     private float speedIncreaseLastTick;
     private float speedIncreaseTime = 2.5f;
@@ -199,6 +204,9 @@ public class PlayerMotor : MonoBehaviour
         //Stop running
         isRunning = false;
 
+        NormalBody.SetActive(false);
+        VoxelizedBody.SetActive(true);
+
         GameManager.Instance.IsDead = true;
     }
 
@@ -207,6 +215,7 @@ public class PlayerMotor : MonoBehaviour
         switch (hit.gameObject.tag)
         {
             case "Obstacle":
+            case "Enemy":
                 //Collision to an obstacle means rip bro
                 Crash();
             break;
