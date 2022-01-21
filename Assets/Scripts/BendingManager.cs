@@ -49,7 +49,7 @@ public class BendingManager : MonoBehaviour
             float elapsedTime = 0;
             float waitTime = Random.Range(5, 15);
 
-            float nextBendAmountUpDown = Random.Range(-2, 2);
+            float nextBendAmountUpDown = Random.Range(-3, -1);
             float nextBendAmountSide = Random.Range(-3, 3);
 
             float currentBendAmountUpDown = m_bendAmountUpDown;

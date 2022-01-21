@@ -19,6 +19,7 @@ public class PlayerMotor : MonoBehaviour
 
     // Movement
     private CharacterController controller;
+    private Collider collider;
     private float jumpForce = 37.0f;
     private float gravity = 45f;
     private float verticalVelocity;
@@ -41,6 +42,8 @@ public class PlayerMotor : MonoBehaviour
     {
         speed = originalSpeed;
         controller = GetComponent<CharacterController>();
+        collider = GetComponent<BoxCollider>();
+        //Debug.Log(collider);
         anim = GetComponent<Animator>();
         initPos = transform.position;
     }
@@ -94,35 +97,35 @@ public class PlayerMotor : MonoBehaviour
         bool isGrounded = IsGrounded();
         anim.SetBool("Grounded", isGrounded);
 
-        // Calculate Y
-        if (isGrounded)
-        {
-            verticalVelocity = -0.1f;
+        // // Calculate Y
+        // if (isGrounded)
+        // {
+        //     //verticalVelocity = -0.1f;
 
-            if(InputController.Instance.SwipeUp)
-            {
-                // Jump
-                anim.SetInteger("RandomJump", Random.Range(1, 3));
-                anim.SetTrigger("Jump");
-                verticalVelocity = jumpForce;
-            }
-            else if(InputController.Instance.SwipeDown)
-            {
-                //Slide
-                StartSliding();
-                Invoke("StopSliding", 1.0f);
-            }
-        }
-        else
-        {
-            verticalVelocity -= (gravity * Time.deltaTime);
+        //     if(InputController.Instance.SwipeUp)
+        //     {
+        //         // Jump
+        //         anim.SetInteger("RandomJump", Random.Range(1, 3));
+        //         anim.SetTrigger("Jump");
+        //         verticalVelocity = jumpForce;
+        //     }
+        //     // else if(InputController.Instance.SwipeDown)
+        //     // {
+        //     //     //Slide
+        //     //     StartSliding();
+        //     //     Invoke("StopSliding", 1.0f);
+        //     // }
+        // }
+        // else
+        // {
+        //     verticalVelocity -= (gravity * Time.deltaTime);
 
-            // Fall if downswipe in air
-            if(InputController.Instance.SwipeDown)
-            {
-                verticalVelocity = -jumpForce;
-            }
-        }
+        //     // Fall if downswipe in air
+        //     if(InputController.Instance.SwipeDown)
+        //     {
+        //         verticalVelocity = -jumpForce;
+        //     }
+        // }
 
         // Down
         moveVector.y = verticalVelocity;
@@ -131,7 +134,9 @@ public class PlayerMotor : MonoBehaviour
         moveVector.z = speed;
 
         // Moving the character
-        controller.Move(moveVector * Time.deltaTime);
+        //controller.Move(moveVector * Time.deltaTime);
+
+        this.gameObject.transform.position += moveVector * Time.deltaTime; 
 
         // // Rotating the character a bit when changing lanes
         // Vector3 dir = controller.velocity;
@@ -142,22 +147,21 @@ public class PlayerMotor : MonoBehaviour
         //     transform.forward = Vector3.Lerp(transform.forward, -dir, TURN_SPEED);
         // }
     }
-
-
+ 
     //EZT MÉG MAJD VÁLTOZTATOM SZTEM BRO
-    private void StartSliding()
-    {
-        anim.SetBool("Sliding", true);
-        controller.height /= 2;
-        controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
-    }
+    // private void StartSliding()
+    // {
+    //     anim.SetBool("Sliding", true);
+    //     controller.height /= 2;
+    //     controller.center = new Vector3(controller.center.x, controller.center.y / 2, controller.center.z);
+    // }
 
-    private void StopSliding()
-    {
-        anim.SetBool("Sliding", false);
-        controller.height *= 2;
-        controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
-    }
+    // private void StopSliding()
+    // {
+    //     anim.SetBool("Sliding", false);
+    //     controller.height *= 2;
+    //     controller.center = new Vector3(controller.center.x, controller.center.y * 2, controller.center.z);
+    // }
 
     private void MoveLane(bool goingRight)
     {
@@ -170,14 +174,14 @@ public class PlayerMotor : MonoBehaviour
     {
         // Cast a ray downwards from the bottom of the character controller 
         Ray groundRay = new Ray(new Vector3(
-                controller.bounds.center.x,
-                (controller.bounds.center.y - controller.bounds.extents.y) + 0.2f,
-                controller.bounds.center.z),
+                collider.bounds.center.x,
+                (collider.bounds.center.y - collider.bounds.extents.y) + 0.5f,
+                collider.bounds.center.z),
             Vector3.down);
 
         Debug.DrawRay(groundRay.origin, groundRay.direction, Color.cyan, 1.0f);
 
-        return (Physics.Raycast(groundRay, 0.2f + 0.1f));
+        return (Physics.Raycast(groundRay, 0.5f + 0.1f));
     }
 
     public void StartRunning()
