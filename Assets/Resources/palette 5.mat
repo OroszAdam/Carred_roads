@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: car_npc_mat
+  m_Name: palette 5
   m_Shader: {fileID: -6465566751694194690, guid: e87631564b11f44df856e594cea2c530,
     type: 3}
   m_ShaderKeywords: HARD_SHADING_ON

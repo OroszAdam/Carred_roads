@@ -8,16 +8,16 @@ public class NPCMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.rotation.y == 0)
-            this.transform.localPosition += moveVector;
+        if ((int)this.transform.rotation.y == 0)
+            this.transform.position += moveVector;
         else
-            this.transform.localPosition -= moveVector;
+            this.transform.position -= moveVector;
 
     }
 }

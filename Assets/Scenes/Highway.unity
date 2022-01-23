@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.05363681, g: 0.19426064, b: 0.11268713, a: 1}
+  m_IndirectSpecularColor: {r: 0.053636655, g: 0.19426066, b: 0.11268679, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -552,8 +552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1396e142b039004585e9ef824d4a468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bendAmountUpDown: -2.2596402
-  m_bendAmountSide: 1.0356854
+  m_bendAmountUpDown: -2.4592717
+  m_bendAmountSide: -2.1772585
 --- !u!4 &747267655
 Transform:
   m_ObjectHideFlags: 0
@@ -6599,6 +6599,7 @@ MonoBehaviour:
   - {fileID: 6319275012165023543, guid: 156b81be408ecbc4794d7a1d5d1c9a8d, type: 3}
   - {fileID: 6319275012165023543, guid: 3125dcfc8eaefa242b4e22bc5f0eb4f7, type: 3}
   - {fileID: 6319275012165023543, guid: 82b8e20a12bc9204f8a3f7c3b8433e05, type: 3}
+  - {fileID: 6319275012165023543, guid: 3be8b9f876660fc41a2074a96eb9b377, type: 3}
   availableCoins:
   - {fileID: 3058404902014391954, guid: 34f1bb933c6b98c4894b7d57696e9ca7, type: 3}
   ramps:
