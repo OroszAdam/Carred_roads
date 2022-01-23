@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
 {
     private const int COIN_SCORE_AMOUNT = 5;
 
-    public static GameManager Instance { set; get; }
+    public static GameManager Instance { get; set; }
 
-    public bool IsDead {set; get; }
+    public bool IsDead { get; set; }
     private bool isGameStarted = false;
     private PlayerMotor motor;
 

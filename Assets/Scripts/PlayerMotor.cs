@@ -42,7 +42,7 @@ public class PlayerMotor : MonoBehaviour
     {
         speed = originalSpeed;
         controller = GetComponent<CharacterController>();
-        collider = GetComponent<BoxCollider>();
+        collider = GetComponentInChildren<BoxCollider>();
         //Debug.Log(collider);
         anim = GetComponent<Animator>();
         initPos = transform.position;
@@ -193,23 +193,17 @@ public class PlayerMotor : MonoBehaviour
 
     private void Crash()
     {
-        //Play death aniamation
-        anim.SetTrigger("Death");
-
         //Stop running
         isRunning = false;
 
         GameManager.Instance.IsDead = true;
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnCollisionEnter(Collision collision)
     {
-        switch (hit.gameObject.tag)
+        if (collision.collider.tag == "Car" || collision.collider.tag == "Player")
         {
-            case "Obstacle":
-                //Collision to an obstacle means rip bro
-                Crash();
-            break;
+            Crash();
         }
     }
 }
