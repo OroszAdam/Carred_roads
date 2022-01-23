@@ -28,8 +28,11 @@ public class PlayerMotor : MonoBehaviour
     //-1 is leftmost, 0 is left lane, 1 is right, 2 is rightmost
     private int desiredLane = 1;
 
+    //condition to move, minimal distance
+
+
     //Speed modification
-    private float originalSpeed = 60.0f;
+    public float originalSpeed = 60.0f;
     private float speed;
     private float speedIncreaseLastTick;
     private float speedIncreaseTime = 2.5f;
