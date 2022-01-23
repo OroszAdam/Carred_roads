@@ -563,8 +563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1396e142b039004585e9ef824d4a468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bendAmountUpDown: -2.87678
-  m_bendAmountSide: 0.5890971
+  m_bendAmountUpDown: -2.2596402
+  m_bendAmountSide: 1.0356854
 --- !u!4 &747267655
 Transform:
   m_ObjectHideFlags: 0
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab8fd523bb65e3498ce6db0c5b68e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHOW_COLLIDER: 1
+  SHOW_COLLIDER: 0
   availableCars:
   - {fileID: 6319275012165023543, guid: 156b81be408ecbc4794d7a1d5d1c9a8d, type: 3}
   - {fileID: 6319275012165023543, guid: 3125dcfc8eaefa242b4e22bc5f0eb4f7, type: 3}
@@ -1549,7 +1549,7 @@ MonoBehaviour:
   - {fileID: 2477257507886138484, guid: 7e5a3eb522ec6b34b98e64782d731316, type: 3}
   - {fileID: 2477257507886138484, guid: 7e5a3eb522ec6b34b98e64782d731316, type: 3}
   - {fileID: 2477257507886138484, guid: 7e5a3eb522ec6b34b98e64782d731316, type: 3}
-  - {fileID: 2477257507886138484, guid: 7e5a3eb522ec6b34b98e64782d731316, type: 3}
+  - {fileID: 2477257507886138484, guid: 26f6a3c787c94464897425c9b7b9f9b6, type: 3}
   - {fileID: 2477257507886138484, guid: 7e5a3eb522ec6b34b98e64782d731316, type: 3}
   - {fileID: 2477257507886138484, guid: 4cb991d8f52f7b7408b7d68a03a94697, type: 3}
   availableTransitions:

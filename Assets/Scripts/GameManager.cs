@@ -78,4 +78,9 @@ public class GameManager : MonoBehaviour
         modifierText.text = "x" + modifierScore.ToString("0.0");
     }
 
+    public void GameOver() 
+    {
+        
+    }
+
 }
