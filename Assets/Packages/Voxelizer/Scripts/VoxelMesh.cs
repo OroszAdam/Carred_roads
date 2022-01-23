@@ -83,8 +83,9 @@ namespace VoxelSystem
             return mesh;
         }
 
-        public static GameObject BuildObject(Voxel_t[] voxels, float unit, Material material, bool useUV = false)
+        public static GameObject BuildObject(Voxel_t[] voxels, float unit, Material material, string folderName, bool useUV = false)
         {
+            AssetDatabase.CreateFolder("Assets/Voxels", folderName);
             GameObject parent = new GameObject("Voxelized_pieces");
             parent.AddComponent<MeshRenderer>();
             Material mat = Resources.Load(material.name) as Material;
@@ -159,7 +160,7 @@ namespace VoxelSystem
                     mesh.tangents = centers.ToArray();
                     mesh.SetTriangles(triangles.ToArray(), 0);
                     mesh.RecalculateBounds();
-                    AssetDatabase.CreateAsset(mesh, $"Assets/Voxels/Truck_3/Voxel_{i}.asset");
+                    AssetDatabase.CreateAsset(mesh, $"Assets/Voxels/{folderName}/Voxel_{i}.asset");
                     AssetDatabase.SaveAssets();
                     //create single voxel GameObject with collider and rigidbody
                     var go = new GameObject($"Voxel_{i}");

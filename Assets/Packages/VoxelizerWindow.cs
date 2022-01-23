@@ -16,9 +16,10 @@ class VoxelizerWindow : EditorWindow
     private Vector2 scrollPos_window = Vector2.zero;
 
     private GameObject selectedObject;
-    private bool useUv = false;
+    private bool useUv = true;
     private float unit = 1f;
-    private int resolution = 100;
+    private int resolution = 15;
+    private string folderName = "FolderName";
     private GameObject voxelPrefab;
 
 
@@ -43,17 +44,17 @@ class VoxelizerWindow : EditorWindow
         GUILayout.EndHorizontal();
 
         GUILayout.Box("", new GUILayoutOption[] { GUILayout.ExpandWidth(true), GUILayout.Height(1) });
-
-        voxelPrefab = EditorGUILayout.ObjectField("Voxel Prefab", voxelPrefab, typeof(GameObject), true, GUILayout.ExpandWidth(true)) as GameObject;
-
         if (GUILayout.Toggle(useUv, new GUIContent("Use UV Texture", ""), GUILayout.Width(buttonSize * 6)) != useUv)
         {
             Event.current.Use();
             useUv = !useUv;
         }
+        GUILayout.Label("To use the UV\nmaterial asset must be located in Resources folder!");
 
         unit = EditorGUILayout.FloatField("Unit", unit);
         resolution = EditorGUILayout.IntField("Resolution", resolution);
+        folderName = EditorGUILayout.TextField("Folder name", folderName);
+
 
         GUILayout.Box("", new GUILayoutOption[] { GUILayout.ExpandWidth(true), GUILayout.Height(1) });
 
@@ -118,7 +119,7 @@ class VoxelizerWindow : EditorWindow
 
         List<Voxel_t> voxels;
         CPUVoxelizer.Voxelize(
-            mesh,   // a target mesh
+            mesh,           // a target mesh
             resolution,     // # of voxels for largest AABB bounds
             out voxels,
             out float unit
@@ -126,7 +127,7 @@ class VoxelizerWindow : EditorWindow
 
         // build gameobject with individual, colliding voxel cube objects
         Material material = selectedObject.GetComponent<MeshRenderer>().sharedMaterial;
-        GameObject go = VoxelMesh.BuildObject(voxels.ToArray(), unit, material, useUv);
+        GameObject go = VoxelMesh.BuildObject(voxels.ToArray(), unit, material, folderName, useUv);
         go.GetComponent<MeshRenderer>().material = material;
     }
 }
