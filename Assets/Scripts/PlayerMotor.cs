@@ -32,7 +32,7 @@ public class PlayerMotor : MonoBehaviour
 
 
     //Speed modification
-    private float originalSpeed = 30.0f;
+    public float originalSpeed = 60.0f;
     private float speed;
     private float speedIncreaseLastTick;
     private float speedIncreaseTime = 2.5f;
@@ -75,24 +75,27 @@ public class PlayerMotor : MonoBehaviour
         //leftmost
         if (desiredLane == -1){
             targetPosition += Vector3.left * 2 * LANE_DISTANCE + new Vector3(-3, 0, 0) ;
-            Debug.Log(targetPosition);}
+            //Debug.Log(targetPosition);
+            }
         // opposite inner lane
         else if (desiredLane == 0){
             targetPosition +=  Vector3.left *  LANE_DISTANCE + new Vector3(-2, 0, 0) ;
-            Debug.Log(targetPosition);}
+            //Debug.Log(targetPosition);
+            }
         // rightmost
         else if (desiredLane == 2){
             targetPosition += Vector3.right * LANE_DISTANCE ;
-            Debug.Log(targetPosition);}
+            //Debug.Log(targetPosition);
+            }
 
         
 
-        Debug.Log(desiredLane);
         //Calculate move delta
         Vector3 moveVector = Vector3.zero;
 
         // Side (lane change)
-        moveVector.x = (targetPosition - transform.position).normalized.x * speed * 2;
+        // The constant multiplier is based purely on tuning by experience
+        moveVector.x = (targetPosition - transform.position).normalized.x * 50;
 
         bool isGrounded = IsGrounded();
         anim.SetBool("Grounded", isGrounded);

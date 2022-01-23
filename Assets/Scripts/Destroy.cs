@@ -19,7 +19,7 @@ public class Destroy : MonoBehaviour
 
         if (gameObject.transform.position.z < player.transform.position.z - threshold)
         {
-            Debug.Log($"Destroying {gameObject.name}");
+            //Debug.Log($"Destroying {gameObject.name}");
             Destroy(gameObject);
         }
 

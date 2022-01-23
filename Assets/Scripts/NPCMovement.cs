@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCMovement : MonoBehaviour
 {
-    Vector3 moveVector = new Vector3(0, 0, -0.1f);
+    Vector3 moveVector = new Vector3(0, 0, -0.3f);
     // Start is called before the first frame update
     void Start()
     {
