@@ -563,8 +563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1396e142b039004585e9ef824d4a468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bendAmountUpDown: -2.2596402
-  m_bendAmountSide: 1.0356854
+  m_bendAmountUpDown: -2.4895296
+  m_bendAmountSide: -0.1673731
 --- !u!4 &747267655
 Transform:
   m_ObjectHideFlags: 0
@@ -586,11 +586,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2635588964142252948, guid: 94a16030fd43f564b871804f843ab365,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6319275012165023543, guid: 94a16030fd43f564b871804f843ab365,
         type: 3}
       propertyPath: m_Name
@@ -1534,6 +1529,7 @@ MonoBehaviour:
   - {fileID: 6319275012165023543, guid: 156b81be408ecbc4794d7a1d5d1c9a8d, type: 3}
   - {fileID: 6319275012165023543, guid: 3125dcfc8eaefa242b4e22bc5f0eb4f7, type: 3}
   - {fileID: 6319275012165023543, guid: 82b8e20a12bc9204f8a3f7c3b8433e05, type: 3}
+  - {fileID: 6319275012165023543, guid: 3be8b9f876660fc41a2074a96eb9b377, type: 3}
   availableCoins:
   - {fileID: 3058404902014391954, guid: 34f1bb933c6b98c4894b7d57696e9ca7, type: 3}
   ramps:
