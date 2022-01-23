@@ -11,16 +11,21 @@ public class CameraMotor : MonoBehaviour
 
     private void Start()
     {
-        offset = this.transform.position;
-        transform.position = player.position + offset;
-
+        if (!GameManager.Instance.IsDead)
+        {
+            offset = this.transform.position;
+            transform.position = player.position + offset;
+        }
         //transform.rotation = Quaternion.Euler(45, 0, 0);
     }
 
     private void LateUpdate()
     {
-        Vector3 desiredPosition = player.position + offset;
-        desiredPosition.x = 0;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime*3);
+        if (!GameManager.Instance.IsDead)
+        {
+            Vector3 desiredPosition = player.position + offset;
+            desiredPosition.x = 0;
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * 3);
+        }
     }
 }
