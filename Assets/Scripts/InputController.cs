@@ -30,28 +30,34 @@ public class InputController : MonoBehaviour
 
         //Check for input
         #region Standalone Inputs
-        if (Input.GetMouseButtonDown(0))
+        if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-            tap = true;
-            startTouch = Input.mousePosition;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            startTouch = swipeDelta = Vector2.zero;
-        }
-        #endregion
-
-        #region Mobile Inputs
-        if (Input.touches.Length != 0)
-        {
-            if (Input.touches[0].phase == TouchPhase.Began) //"touches[0]" means first finger to touch
+            if (Input.GetMouseButtonDown(0))
             {
                 tap = true;
                 startTouch = Input.mousePosition;
             }
-            else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled) //canceled means that something happens (like an incoming call), so the touch ends
+            else if (Input.GetMouseButtonUp(0))
             {
                 startTouch = swipeDelta = Vector2.zero;
+            }
+        }
+        #endregion
+
+        #region Mobile Inputs
+        else if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            if (Input.touches.Length != 0)
+            {
+                if (Input.touches[0].phase == TouchPhase.Began) //"touches[0]" means first finger to touch
+                {
+                    tap = true;
+                    startTouch = Input.mousePosition;
+                }
+                else if (Input.touches[0].phase == TouchPhase.Ended || Input.touches[0].phase == TouchPhase.Canceled) //canceled means that something happens (like an incoming call), so the touch ends
+                {
+                    startTouch = swipeDelta = Vector2.zero;
+                }
             }
         }
 
